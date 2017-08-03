@@ -64,45 +64,31 @@
     </div>
   </div>
 <script type="text/javascript">
-  var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://api.yelp.com/v3/businesses/search?location=92780",
-  "method": "GET",
-  "headers": {
-    "authorization": "Bearer 8OuUJR-QLND67vEyh8486vuUdhCg1r1IhznI1APTqBej4UAifmROjMrw2CBMnEgUMKHk5-6Ln5rCJ59DE0--la2JjRPQxpcyAsC-VujIK6IOeIbuvl9089KC0ad_WXYx",
-    "cache-control": "no-cache"
-  }
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
 
   var locationZIP = "92626";
-  var queryURL = "https://api.brewerydb.com/v2/search?q=ipa&key=cead0935bcae01ba063baf6bfb4b5988&postalCode=" + locationZIP;
+  var queryURL = "http://api.brewerydb.com/v2/search?q=ipa&key=cead0935bcae01ba063baf6bfb4b5988&postalCode=" + locationZIP;
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).done(function(response) {
     console.log(response);
-    // // Getting the first row of the table
-    // var firstRowTds = $("breweryTable")
-    //   .children()
-    //   .eq(1)
-    //   .children("tr")
-    //   .eq(0)
-    //   .children("td");
+    // Getting the first row of the table
+    var firstRowTds = $("#breweryTable")
+      .children()
+      .eq(1)
+      .children("tr")
+      .eq(0)
+      .children("td");
 
-    // // Setting the inner text of each td in the first row
-    // firstRowTds.eq(0).text(response.Title);
+    // Setting the inner text of each td in the first row
+    firstRowTds.eq(0).text(response.Title);
 
-    // firstRowTds.eq(1).text(response.Year);
+    firstRowTds.eq(1).text(response.Year);
 
-    // firstRowTds.eq(2).text(response.Actors);
+    firstRowTds.eq(2).text(response.Actors);
 
-    // firstRowTds.eq(3).html('<img width="150" height="auto" src="' + response.Poster + '"' + ' />');
+    firstRowTds.eq(3).html('<img width="150" height="auto" src="' + response.Poster + '"' + ' />');
   });
 
   // Initialize Firebase
